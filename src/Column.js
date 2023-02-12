@@ -2,8 +2,9 @@ import React from "react";
 import Tile from "./Tile";
 import './Column.css'
 
-const Column = () => {
+const Column = ({data}) => {
 
+  console.log(data)
 
   return (
     <div className="column">
