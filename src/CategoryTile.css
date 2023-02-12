@@ -1,8 +1,9 @@
-.tile {
+.category-tile {
   background-color: rgb(1, 0, 101);
-  color: rgb(205, 144, 58);
+  color: white;
   width: 14vw;
   height: 12vh;
   margin: 5px;
-  /* padding: 2px; */
+  /* padding: auto; */
+  display: inline-block;
 }

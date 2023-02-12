@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Column from './Column'
 import useJService from "./hooks/useJService";
+import Tile from "./Tile";
+import CategoryTile from "./CategoryTile";
+
 
 const Container = () => {
 
@@ -20,7 +23,7 @@ const Container = () => {
   useEffect(() => {
     const getClueData = async (cats) => {
       let clues = await getClues(cats)
-      // console.log(clues)
+      console.log(clues)
       setCluesArray(clues)
     }
     getClueData(categories);
@@ -36,7 +39,12 @@ const Container = () => {
   } else {
     return (
       <>
-        <h1>Jeopardy!</h1>
+        <span>
+          <h1>Jeopardy!</h1>
+        </span>
+        {categories.map((c) => {
+          return <CategoryTile c={c}/>
+        })}
         {cluesArray.map((d) => {
           return <Column data={d} />
         })}
