@@ -23,10 +23,12 @@ const Container = () => {
   useEffect(() => {
     const getClueData = async (cats) => {
       let clues = await getClues(cats)
-      console.log(clues)
+      // console.log(clues)
       setCluesArray(clues)
     }
-    getClueData(categories);
+    for (let category of categories) {
+      getClueData(category);
+    }
   }, [categories])
 
   if (cluesArray.length == 0) {
