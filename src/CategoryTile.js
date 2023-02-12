@@ -4,7 +4,7 @@ import './CategoryTile.css'
 
 const CategoryTile = ({c}) => {
 
-  console.log(c.title)
+  // console.log(c.title)
 
   return (
     <div className="category-tile">

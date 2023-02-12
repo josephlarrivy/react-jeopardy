@@ -11,20 +11,20 @@ const Column = ({data}) => {
     console.log(data)
   }, [])
   
-  // if (displayData.length == 0) {
+  // if (!data) {
   //   return (
   //     <>
       
   //     </>
   //   )
   // } else {
-  //   return (
-  //     <div className="column">
-  //       {displayData.map((d) => {
-  //         return <Tile data={d} />
-  //       })}
-  //     </div>
-  //   )
+    return (
+      <div className="column">
+        {data.map((d) => {
+          return <Tile data={d} />
+        })}
+      </div>
+    )
   // }
   
 }

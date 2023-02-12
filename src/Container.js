@@ -10,6 +10,7 @@ const Container = () => {
   const [getCategories, getClues] = useJService();
   const [categories, setCategories] = useState([]);
   // const [cluesArray, setCluesArray] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   let cluesArray = [];
 
@@ -25,19 +26,21 @@ const Container = () => {
   useEffect(() => {
     const getClueData = async (cats) => {
       let clues = await getClues(cats)
-      console.log(clues)
+      // console.log(clues)
       // setCluesArray(cluesArray.push([clues]))
       cluesArray.push(clues)
-      console.log(cluesArray)
+      // console.log(cluesArray)
     }
     for (let category of categories) {
       getClueData(category);
     }
+    setLoading(false)
   }, [categories])
 
+  console.log(loading)
 
 
-  if (cluesArray.length < 4) {
+  if (loading == true) {
     console.log('test')
     return (
       <>
@@ -46,7 +49,7 @@ const Container = () => {
       </>
     )
   } else {
-    // console.log(cluesArray)
+    console.log(cluesArray)
     return (
       <>
         <span>
@@ -56,7 +59,7 @@ const Container = () => {
           return <CategoryTile c={c}/>
         })}
         {cluesArray.map((data) => {
-          return <Column data={data}/>
+          console.log(data)
         })}
       </>
     )
