@@ -1,0 +1,7 @@
+.tile {
+    background-color: aqua;
+    width: 12rem;
+    height: 6rem;
+    margin: 10px;
+    padding: 10px;
+}
