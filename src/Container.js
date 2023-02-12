@@ -9,7 +9,9 @@ const Container = () => {
 
   const [getCategories, getClues] = useJService();
   const [categories, setCategories] = useState([]);
-  const [cluesArray, setCluesArray] = useState([]);
+  // const [cluesArray, setCluesArray] = useState([]);
+
+  let cluesArray = [];
 
   useEffect(() => {
     const getCategoryData = async () => {
@@ -23,15 +25,20 @@ const Container = () => {
   useEffect(() => {
     const getClueData = async (cats) => {
       let clues = await getClues(cats)
-      // console.log(clues)
-      setCluesArray(clues)
+      console.log(clues)
+      // setCluesArray(cluesArray.push([clues]))
+      cluesArray.push(clues)
+      console.log(cluesArray)
     }
     for (let category of categories) {
       getClueData(category);
     }
   }, [categories])
 
-  if (cluesArray.length == 0) {
+
+
+  if (cluesArray.length < 4) {
+    console.log('test')
     return (
       <>
         <h1>Jeopardy!</h1>
@@ -39,6 +46,7 @@ const Container = () => {
       </>
     )
   } else {
+    // console.log(cluesArray)
     return (
       <>
         <span>
@@ -47,8 +55,8 @@ const Container = () => {
         {categories.map((c) => {
           return <CategoryTile c={c}/>
         })}
-        {cluesArray.map((d) => {
-          return <Column data={d} />
+        {cluesArray.map((data) => {
+          return <Column data={data}/>
         })}
       </>
     )
