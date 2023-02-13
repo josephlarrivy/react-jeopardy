@@ -1,3 +1,5 @@
 .column {
   display: flex;
+  width: 15vw;
+  height: 13vh;
 }

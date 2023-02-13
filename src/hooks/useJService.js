@@ -24,46 +24,29 @@ const useJService = () => {
     return categories;
   }
 
-  const getClues = async (category) => {
-    let allClues = [];
+  const getClues = async (categories) => {
 
-    // for (let num of points) {
+    let packagedClues = [];
+
+    for (let category of categories) {
+
+      let categoryClues = [];
+      let num = 100;
+
       const res = await axios.get(
         `http://jservice.io/api/clues?category=${category.id}`
       )
-
       for (let item of res.data) {
-        allClues.push(item)
-      } 
-      
-      // console.log(allClues)
-
-      let returnClues = [];
-      let count=0;
-      let points = [100, 200, 300, 400, 500]
-      // while (returnClues.length < 5) {
-        for (let point of points) {
-          // console.log(point)
-          for (let clue of allClues) {
-            // console.log(clue)
-            if (
-              clue.value == point && 
-              !returnClues.includes(clue) &&
-              returnClues.length < point/100
-              ) {
-              returnClues.push(clue)
-              // console.log(clue)
-              // return
-            }
-            // break
-          }
-        // }
-        
-
+        if (item.value == num && item.value <= 500) {
+          categoryClues.push(item)
+          // console.log(num)
+          num +=100
+        }
       }
-
-    // console.log(returnClues)
-    return returnClues;
+      // console.log(categoryClues)
+      packagedClues.push(categoryClues)
+    }
+    return packagedClues
   }  
 
 
