@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Tile from "./Tile";
 import './Column.css'
+import { render } from "@testing-library/react";
 
-const Column = ({data}) => {
+const Column = ({item}) => {
 
   const [displayData, setDisplayData] = useState([]);
 
-  useEffect(() => {
-    setDisplayData(data)
-    console.log(data)
-  }, [])
+  console.log(item)
+
+  // useEffect(() => {
+  //   setDisplayData(data)
+  //   console.log(data)
+  // }, [])
   
   // if (!data) {
   //   return (
@@ -20,8 +23,9 @@ const Column = ({data}) => {
   // } else {
     return (
       <div className="column">
-        {data.map((d) => {
-          return <Tile data={d} />
+        {/* <p>test</p> */}
+        {item.map((data) => {
+          render( <Tile data={data} /> )
         })}
       </div>
     )

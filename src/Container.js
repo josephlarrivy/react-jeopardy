@@ -3,21 +3,23 @@ import Column from './Column'
 import useJService from "./hooks/useJService";
 import Tile from "./Tile";
 import CategoryTile from "./CategoryTile";
+import { render } from "@testing-library/react";
 
 
 const Container = () => {
 
   const [getCategories, getClues] = useJService();
   const [categories, setCategories] = useState([]);
-  // const [cluesArray, setCluesArray] = useState([]);
+  const [cluesData, setCluesData] = useState([]);
   const [loading, setLoading] = useState(true)
+  const [refresh, setRefresh] = useState(false)
 
   let cluesArray = [];
 
   useEffect(() => {
     const getCategoryData = async () => {
       const categories = await getCategories();
-      console.log(categories)
+      // console.log(categories)
       setCategories(categories)
     }
     getCategoryData()
@@ -26,8 +28,6 @@ const Container = () => {
   useEffect(() => {
     const getClueData = async (cats) => {
       let clues = await getClues(cats)
-      // console.log(clues)
-      // setCluesArray(cluesArray.push([clues]))
       cluesArray.push(clues)
       // console.log(cluesArray)
     }
@@ -35,35 +35,53 @@ const Container = () => {
       getClueData(category);
     }
     setLoading(false)
-  }, [categories])
+    // setCluesData(cluesArray)
+    // console.log(cluesData)
+  }, [refresh])
 
-  console.log(loading)
+  useEffect(() => {
+    setCluesData(cluesArray)
+  }, [refresh])
+
+  const handleClick = () => {
+    setRefresh(true)
+  }
 
 
   if (loading == true) {
     console.log('test')
     return (
       <>
+        <button onClick={handleClick}>test</button>
         <h1>Jeopardy!</h1>
         <h4>Loading</h4>
       </>
     )
   } else {
-    console.log(cluesArray)
+    console.log(cluesData)
     return (
       <>
+        <button onClick={handleClick}>test</button>
         <span>
           <h1>Jeopardy!</h1>
         </span>
         {categories.map((c) => {
           return <CategoryTile c={c}/>
         })}
-        {cluesArray.map((data) => {
-          console.log(data)
+        {cluesData.forEach((item) => {
+          console.log(item)
+          return (
+            <div>
+              <Column item={item} />
+            </div>
+          )
         })}
       </>
     )
   }
+
+
+  
   
 }
 
