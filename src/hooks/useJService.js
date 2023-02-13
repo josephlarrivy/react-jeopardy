@@ -39,22 +39,13 @@ const useJService = () => {
       for (let item of res.data) {
         if (item.value == num && item.value <= 500) {
           categoryClues.push(item)
-          // console.log(num)
           num +=100
         }
       }
-      // console.log(categoryClues)
       packagedClues.push(categoryClues)
     }
     return packagedClues
   }  
-
-
-
-
-
-
-
 
 
   return [getCategories, getClues];

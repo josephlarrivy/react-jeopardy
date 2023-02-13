@@ -5,15 +5,14 @@ import { render } from "@testing-library/react";
 
 const Column = ({data}) => {
 
-
   return (
     <div className="column">
-      {data.map((item) => {
-        render( <Tile item={item} /> )
+      {data.map((element) => {
+        return <Tile element={element} />
       })}
     </div>
   )
-  
+    
 }
 
 export default Column;

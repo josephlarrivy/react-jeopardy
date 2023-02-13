@@ -1,5 +1,7 @@
 .column {
-  display: flex;
+  display: inline-block;
   width: 15vw;
-  height: 13vh;
+  height: 15vh;
+  margin-right: 2px;
+  margin-left: 2px;
 }
