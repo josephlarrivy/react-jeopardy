@@ -7,6 +7,13 @@
   display: inline-block;
 }
 
+.tile-value h2 {
+  background-color: rgb(1, 0, 101);
+  color: rgb(205, 144, 58);
+  width: 94%;
+  height: 16%;
+}
+
 .tile-question {
   background-color: rgb(1, 0, 101);
   color: white;
@@ -14,6 +21,16 @@
   height: 15vh;
   margin-bottom: 4px;
   display: inline-block;
+  text-align: center;
+}
+
+.tile-question p {
+  background-color: rgb(1, 0, 101);
+  color: white;
+  width: 94%;
+  height: 16%;
+  overflow: wrap;
+  text-align: center;
 }
 
 .tile-answer {
@@ -23,6 +40,14 @@
   height: 15vh;
   margin-bottom: 4px;
   display: inline-block;
+}
+
+.tile-answer p {
+  background-color: rgb(1, 0, 101);
+  color: white;
+  width: 94%;
+  height: 16%;
+    overflow: wrap;
 }
 
 .tile-blank {

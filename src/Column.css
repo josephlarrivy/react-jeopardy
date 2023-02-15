@@ -1,7 +1,8 @@
 .column {
   display: inline-block;
   width: 15vw;
-  height: 15vh;
+  height: 80vh;
   margin-right: 2px;
   margin-left: 2px;
+  overflow: hidden;
 }
